@@ -1,0 +1,12 @@
+name 'QIIME'
+maintainer 'EagleGenomics'
+maintainer_email 'chef@eaglegenomics.com'
+license 'Apache v2.0'
+description 'Installs/Configures QIIME'
+long_description 'Installs/Configures QIIME'
+version '0.1.0'
+
+depends 'build-essential'
+depends 'magic_shell'
+depends 'python'
+depends 'apt'

@@ -1,2 +1,4 @@
 # QIIME
-Cookbook for installing QIIME
+
+TODO: Enter the cookbook description here.
+
