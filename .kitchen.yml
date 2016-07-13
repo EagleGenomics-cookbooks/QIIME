@@ -1,6 +1,7 @@
 ---
 driver:
-  name: vagrant
+  name: docker
+  use_sudo: false
   customize:
     memory: 1024
 
@@ -15,8 +16,8 @@ provisioner:
 platforms:
   - name: ubuntu-12.04
   - name: ubuntu-14.04
-    # Need dependency package names to support centos
-    - name: centos-7.1
+ # Need dependency package names to support centos
+ # - name: centos-7.1
 
 suites:
   - name: default
