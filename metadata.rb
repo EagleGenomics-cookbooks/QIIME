@@ -6,6 +6,9 @@ description 'Installs/Configures QIIME'
 long_description 'Installs/Configures QIIME'
 version '0.1.1'
 
+source_url 'https://github.com/EagleGenomics-cookbooks/QIIME'
+issues_url 'https://github.com/EagleGenomics-cookbooks/QIIME/issues'
+
 depends 'build-essential'
 depends 'magic_shell'
 depends 'python'
