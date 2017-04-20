@@ -6,6 +6,7 @@
 
 include_recipe 'apt'
 include_recipe 'build-essential'
+include_recipe 'r'
 
 # ubuntu package dependencies for base qiime
 # now need python-tk to prevent import _tkinter error.
@@ -20,6 +21,10 @@ python_package 'numpy'
 
 python_package 'qiime' do
   version node['QIIME']['version']
+end
+
+r_package %w(ape biom optparse RColorBrewer randomForest vegan)  do
+  action :install
 end
 
 magic_shell_environment 'QIIME_VERSION' do
