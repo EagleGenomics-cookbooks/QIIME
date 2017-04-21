@@ -1,3 +1,4 @@
+
 #
 # Cookbook Name:: QIIME
 # Recipe:: default
@@ -23,9 +24,12 @@ python_package 'qiime' do
   version node['QIIME']['version']
 end
 
-r_package %w(ape biom optparse RColorBrewer randomForest vegan)  do
-  action :install
-end
+r_package 'ape'
+r_package 'biom'
+r_package 'optparse'
+r_package 'RColorBrewer'
+r_package 'randomForest'
+r_package 'vegan'
 
 magic_shell_environment 'QIIME_VERSION' do
   value node['QIIME']['version']
