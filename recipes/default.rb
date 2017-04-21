@@ -31,6 +31,15 @@ r_package 'RColorBrewer'
 r_package 'randomForest'
 r_package 'vegan'
 
+script 'install_bioconductor_packages' do
+  interpreter 'Rscript'
+  code <<-SCRIPT
+  source( 'http://bioconductor.org/biocLite.R' )
+  biocLite(c('DESeq2', 'metagenomeSeq'))
+  q()
+  SCRIPT
+end
+
 magic_shell_environment 'QIIME_VERSION' do
   value node['QIIME']['version']
 end
