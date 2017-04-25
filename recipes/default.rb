@@ -32,7 +32,7 @@ r_package 'randomForest'
 r_package 'vegan'
 
 apt_package 'libxml2-dev'
-aot_package 'libcurl4-openssl-dev'
+apt_package 'libcurl4-openssl-dev'
 
 script 'install_bioconductor_packages' do
   interpreter 'Rscript'
