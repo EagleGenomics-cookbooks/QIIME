@@ -31,11 +31,15 @@ r_package 'RColorBrewer'
 r_package 'randomForest'
 r_package 'vegan'
 
+apt_package 'libxml2-dev'
+aot_package 'libcurl4-openssl-dev'
+
 script 'install_bioconductor_packages' do
   interpreter 'Rscript'
   code <<-SCRIPT
   source( 'http://bioconductor.org/biocLite.R' )
-  biocLite(c('DESeq2', 'metagenomeSeq'))
+  biocLite(c("DESeq2"), dependencies = TRUE)
+  biocLite('metagenomeSeq')
   q()
   SCRIPT
 end
