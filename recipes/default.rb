@@ -25,11 +25,25 @@ python_package 'qiime' do
 end
 
 r_package 'ape'
-r_package 'biom'
 r_package 'optparse'
 r_package 'RColorBrewer'
 r_package 'randomForest'
 r_package 'vegan'
+r_package 'RJSONIO'
+r_package 'plyr'
+
+# install biom R package from tar file
+
+remote_file "#{Chef::Config[:file_cache_path]}/#{node['biom']['filename']}" do
+  source node['biom']['url']
+  action :create_if_missing
+end
+
+execute 'install_biom' do
+  command "R CMD INSTALL #{Chef::Config[:file_cache_path]}/#{node['biom']['filename']}"
+end
+
+# other required packages
 
 apt_package 'libxml2-dev'
 apt_package 'libcurl4-openssl-dev'
