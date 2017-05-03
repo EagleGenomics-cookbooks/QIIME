@@ -53,7 +53,7 @@ script 'install_bioconductor_packages' do
   code <<-SCRIPT
   source( 'http://bioconductor.org/biocLite.R' )
   biocLite(c("DESeq2"), dependencies = TRUE)
-  biocLite('metagenomeSeq')
+  biocLite(c("metagenomeSeq"), dependecies = TRUE)
   biocLite("biomformat")
   q()
   SCRIPT
