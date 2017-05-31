@@ -47,6 +47,7 @@ end
 
 apt_package 'libxml2-dev'
 apt_package 'libcurl4-openssl-dev'
+apt_package 'muscle'
 
 script 'install_bioconductor_packages' do
   interpreter 'Rscript'
