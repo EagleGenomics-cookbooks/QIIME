@@ -8,4 +8,9 @@ describe 'QIIME::default' do
   describe command('print_qiime_config.py -t') do
     its(:exit_status) { should eq 0 }
   end
+
+  # Test QIIME commands run succesfully
+  describe command('make_distance_boxplots.py -h') do
+    its(:exit_status) { should eq 0 }
+  end
 end
