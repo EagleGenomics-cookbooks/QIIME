@@ -24,6 +24,10 @@ python_package 'qiime' do
   version node['QIIME']['version']
 end
 
+python_package 'h5py' do
+  version node['h5py']['version']
+end
+
 r_package 'ape'
 r_package 'optparse'
 r_package 'RColorBrewer'
