@@ -27,16 +27,11 @@ before_script:
 script:
 - KITCHEN_LOCAL_YAML=.kitchen.docker.yml /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
 notifications:
-  slack:
-    on_success: change
-    on_failure: change
-    rooms:
-      secure: f5RvigWDLOqqoJkRN2i8vMVr4+bksqPiB8tYL60dpRRJvI9/a3KZS4SXbODWx+aOXXtTpY8JvECreYUo/PK24VQzGykGpK1uSU1nGe3Wh0K85BpyefRbx+eA3hWz/D4pxX1kNAObalPs2t9IzDGEWswYilTfwKppKHeH0OShWE3KVr+HY/iKcWKailZthjuKySwj+cPeyH601LtA+Z8+ySLtBo+sRtlZCLz2QjLI1OCqw2excpw/RFLxXW4ZNaHUeLVE9kynt4o6wOJmZtZTOTu1At9Ohvm+DNCSNfl/3Re30pkWJFNcItC1Y7iBykHVTcUxyL8M+HR3OaTuA1uvYxrZA5BfpCFCsfCBVktzcXWdQcX64cDVRWFXFlIUp+QUvpHOBIH4kcoQ3Wzt3RgyazZiaNC1TDw+s/LVV37+wjQPJnuFKIDEo1bXrsfsgECnhnp5+BU/xCErxwOWuVV1Yk2GN3xBik7OVXkMOr32UchYrndtHbt8dgrHWa5wdJCIQPYxyUoy2VZGMJm4WKBZeL4SBDmyWkhq4Rm8Ek3m/Z/XMz9gRMnTcm+em+a3ORqGGayyqvewKyBXBkd+TWBtCob3qOblfdIOAEqHwEL+/1plQ+IcgMlNrsOaWOGxESz/Qoe/rAvweInszNdpuS3I+QsmpeKvJJDQ2UgIedV//sw=
-    on_failure: change
-    on_success: change
   email:
     on_success: change
     on_failure: change
+  slack:
+    secure: PIK4T1f7WAmWbTNB4f2SyEzjYLHsrNF4YL5amk1y0MNMcXngs1r7apu+ilTqU/pJlU/R+eZ2ooNW8FbWabfHFWahcPwb0NVxz1pSHBPQkE98nZhxtiIEr21Z665bncmPTiUHOftj0Q9CibsXq3sXp04R6OCx34m4I8K0SfZLGdhqp/deJoS4d4FqYELlYNQ7bNDprBPy1WBkM4e5ULq63er1mHHNFDc56dcG6ctSVVyajz33wInbRqTIBZGWPjKVAcp89T8MeLlibYgrXPHwOm7yrC+alZNzJHqQJLkhmmLui0r32SfxJRdwYoK0I/TAFwxIT8LHWsk1cXNcLthEMgurHEXzdm9X/BAfsvMLRNKw2MeG8WGCMyl1g0MtOE3Vz+HV4BROQ5Z/zMOpjk9cl+HKa+/H4ohMgIbnLBirpWl9bOltLrSPzWkTEKBicAuVs3jJmYxbJ4tofkV64QR55DcA6uP1Kz3SqnNfw/+5UlVxPmDOfF2mbNAEn4fTqwxw55m3+qPIAUAUZRjWSzAMhQB5HGxDJRXWuWfCIHb2jd/fczzV6kzysB5hhe39NVmSIiXFh3r95NY7gyvLCIP8rX+/CdJl53ameBaSkNj4LjvWMEySrA6Dgu9Hx1OcyT/rSfB2IQt//wT9kxxI206let3vnvFky/ySDp5M1uzbk04=
 after_success:
 - chmod +x trigger_dependent_build.sh
 - "./trigger_dependent_build.sh EagleGenomics-cookbooks qiime_runnable private $TRAVIS_ACCESS_TOKEN"
