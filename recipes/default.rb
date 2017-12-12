@@ -20,6 +20,11 @@ python_runtime '2'
 
 python_package 'numpy'
 
+# dependency for qiime but installation fails if part of requirement due
+python_package 'emperor' do
+  version node['emperor']['version']
+end
+
 python_package 'qiime' do
   version node['QIIME']['version']
 end

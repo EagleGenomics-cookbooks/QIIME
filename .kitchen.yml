@@ -15,7 +15,7 @@ provisioner:
 #   name: inspec
 
 platforms:
-  - name: ubuntu-12.04
+  - name: ubuntu-16.04
   - name: ubuntu-14.04
  # Need dependency package names to support centos
  # - name: centos-7.1

@@ -17,6 +17,7 @@ env:
   - secure: UqcOQzhCShFLCNpbsZoO8uBLp9XUkAAEVIfcdCmp73Y8dF6B+EmeShtlYahCeC1tI2yKWCj2gFk6ZSn1hw8m59JJzd+kH6FU0yqsS5uhs4RrsY3crgSht4Z28UqzvnFXDrbUJ0M3NxdkWvKIAYLkHS82oAGXXcyuIhgnt75JMtK4y+7bNKt2KmPl3ueTUxT/rP6Fe8PeJdpIh2rHNbF4dsOct11VYHjtKaAahvHtEs+XxKgYWECO2OH1tfohXNvhk1Rz8iSHE+uoTNapL7ZKhRXpEisQp3vYGnAe2VpmF8C9ri9VfJSBMNnh8NusM0BTzgk7PkkxI2OcCCRmi5CG0vukUpO7mjbJFzGh89qH6+NzPdNHkDlp187ZA57dw0KpkDGAN1n9nQlpz37X7xvKPRWWXgRQy7p5uQnTkdK93bl6sWl3oSKARCeXYOjSOO+grzGMob7GibbmCqMKHJJmrdAMojdZi96/+HrrWdxl/F1AOIbjq0Uf0PvkH5kdGpso9G+DneHdUcJ7xluj5AyaoHuNRrWnwJNcxDa7GcNS167hcXT3fquSzE+1AoMpWOPbUDGiSqcV2RUfKyWlSFtcl2H5ooDB4Ek0YDzBbeXnUNLGYk3rVSXWBiJmlMVj2e/uK2NvREcWXZ/9JYuqJvQ/CC0QoDFzQZazW3LdxedWTIk=
   matrix:
   - CHEF_VERSION=current INSTANCE=default-ubuntu-1404
+  - CHEF_VERSION=current INSTANCE=default-ubuntu-1604
 before_script:
 - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables
   -N DOCKER )
