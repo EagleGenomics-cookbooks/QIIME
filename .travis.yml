@@ -1,11 +1,5 @@
 sudo: required
 dist: trusty
-addons:
-  apt:
-    sources:
-    - chef-stable-trusty
-    packages:
-    - chefdk
 install: echo "skip bundle install"
 branches:
   only:
@@ -23,7 +17,7 @@ before_script:
   -N DOCKER )
 - eval "$(/opt/chefdk/bin/chef shell-init bash)"
 - chef gem install kitchen-docker
-- "/opt/chefdk/bin/chef exec rake tests"
+- /opt/chefdk/bin/chef exec rake tests
 script:
 - KITCHEN_LOCAL_YAML=.kitchen.docker.yml /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
 notifications:
@@ -34,4 +28,4 @@ notifications:
     secure: PIK4T1f7WAmWbTNB4f2SyEzjYLHsrNF4YL5amk1y0MNMcXngs1r7apu+ilTqU/pJlU/R+eZ2ooNW8FbWabfHFWahcPwb0NVxz1pSHBPQkE98nZhxtiIEr21Z665bncmPTiUHOftj0Q9CibsXq3sXp04R6OCx34m4I8K0SfZLGdhqp/deJoS4d4FqYELlYNQ7bNDprBPy1WBkM4e5ULq63er1mHHNFDc56dcG6ctSVVyajz33wInbRqTIBZGWPjKVAcp89T8MeLlibYgrXPHwOm7yrC+alZNzJHqQJLkhmmLui0r32SfxJRdwYoK0I/TAFwxIT8LHWsk1cXNcLthEMgurHEXzdm9X/BAfsvMLRNKw2MeG8WGCMyl1g0MtOE3Vz+HV4BROQ5Z/zMOpjk9cl+HKa+/H4ohMgIbnLBirpWl9bOltLrSPzWkTEKBicAuVs3jJmYxbJ4tofkV64QR55DcA6uP1Kz3SqnNfw/+5UlVxPmDOfF2mbNAEn4fTqwxw55m3+qPIAUAUZRjWSzAMhQB5HGxDJRXWuWfCIHb2jd/fczzV6kzysB5hhe39NVmSIiXFh3r95NY7gyvLCIP8rX+/CdJl53ameBaSkNj4LjvWMEySrA6Dgu9Hx1OcyT/rSfB2IQt//wT9kxxI206let3vnvFky/ySDp5M1uzbk04=
 after_success:
 - chmod +x trigger_dependent_build.sh
-- "./trigger_dependent_build.sh EagleGenomics-cookbooks qiime_runnable private $TRAVIS_ACCESS_TOKEN"
+- ./trigger_dependent_build.sh EagleGenomics-cookbooks qiime_runnable private $TRAVIS_ACCESS_TOKEN
