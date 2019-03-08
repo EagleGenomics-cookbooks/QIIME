@@ -11,5 +11,4 @@ issues_url 'https://github.com/EagleGenomics-cookbooks/QIIME/issues'
 
 depends 'magic_shell'
 depends 'poise-python'
-depends 'apt'
 depends 'r'
