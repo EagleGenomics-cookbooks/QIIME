@@ -5,47 +5,43 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-apt_update
-build_essential 'install essential' do
-  action :install
-end
+apt_update if node['platform_family'] == 'debian'
 
-include_recipe 'r'
+# install all locales to avoid any 'locale not found' errors during perl module installation
+# otherwise breaks pyenv python install
+# package 'locales-all' do
+#  only_if { node['platform_family'] == 'debian' }
+# end
+
+# python-openssl
+
+include_recipe 'python_setup'
 
 # ubuntu package dependencies for base qiime
 # now need python-tk to prevent import _tkinter error.
 # See eg. http://stackoverflow.com/questions/26702119/installing-tkinter-on-ubuntu-14-04
-package %w(pkg-config libpng-dev libjpeg8-dev libfreetype6-dev python-tk) do
-  action :install
-end
+# package %w(pkg-config libpng-dev libjpeg8-dev libfreetype6-dev python-tk) do
+#  action :install
+# end
 
-python_runtime '2'
-
-python_package 'numpy'
+pyenv_pip 'numpy'
 
 # dependency for qiime but installation fails if part of requirement due
-python_package 'emperor' do
+pyenv_pip 'emperor' do
   version node['emperor']['version']
 end
 
-python_package 'qiime' do
+pyenv_pip 'qiime' do
   version node['QIIME']['version']
 end
 
-python_package 'h5py' do
+pyenv_pip 'h5py' do
   version node['h5py']['version']
 end
 
-r_package 'ape'
-r_package 'optparse'
-r_package 'RColorBrewer'
-r_package 'randomForest'
-r_package 'vegan'
-r_package 'RJSONIO'
-r_package 'plyr'
+include_recipe 'R'
 
 # install biom R package from tar file
-
 remote_file "#{Chef::Config[:file_cache_path]}/#{node['biom']['filename']}" do
   source node['biom']['url']
   action :create_if_missing

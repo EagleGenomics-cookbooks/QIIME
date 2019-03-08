@@ -11,5 +11,5 @@ source_url 'https://github.com/EagleGenomics-cookbooks/QIIME'
 issues_url 'https://github.com/EagleGenomics-cookbooks/QIIME/issues'
 
 depends 'magic_shell'
-depends 'poise-python'
-depends 'r'
+depends 'python_setup'
+depends 'R'
