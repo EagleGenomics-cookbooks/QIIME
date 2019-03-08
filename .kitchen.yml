@@ -1,22 +1,23 @@
+---
 driver:
   name: docker
-  use_sudo: false
-  customize:
-    memory: 1024
+
 provisioner:
   name: chef_zero
-  require_chef_omnibus: 12.19.36
-# Uncomment the following verifier to leverage Inspec instead of Busser (the
-# default verifier)
-# verifier:
-#   name: inspec
+  product_version: 14.10
+  
+verifier:
+  name: inspec
+  sudo_command: . /etc/profile;
+
 platforms:
-- name: ubuntu-16.04
-- name: ubuntu-14.04
- # Need dependency package names to support centos
- # - name: centos-7.1
+  - name: ubuntu-18.04
+
 suites:
-- name: default
-  run_list:
-  - recipe[QIIME::default]
-  attributes:
+  - name: default
+    run_list:
+      - recipe[QIIME::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
