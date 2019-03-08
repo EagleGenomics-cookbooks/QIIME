@@ -13,10 +13,9 @@ end
 # Test the QIIME base installation
 describe command('print_qiime_config.py -t') do
   its(:exit_status) { should eq 0 }
-  end
+end
 
 # Test QIIME commands run succesfully
 describe command('make_distance_boxplots.py -h') do
-    its(:exit_status) { should eq 0 }
+  its(:exit_status) { should eq 0 }
 end
-
