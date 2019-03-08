@@ -6,7 +6,10 @@
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
 include_recipe 'apt'
-include_recipe 'build-essential'
+build_essential 'install essential' do
+  action :install
+end
+
 include_recipe 'r'
 
 # ubuntu package dependencies for base qiime

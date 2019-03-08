@@ -9,7 +9,6 @@ version '0.1.3'
 source_url 'https://github.com/EagleGenomics-cookbooks/QIIME'
 issues_url 'https://github.com/EagleGenomics-cookbooks/QIIME/issues'
 
-depends 'build-essential'
 depends 'magic_shell'
 depends 'poise-python'
 depends 'apt'
