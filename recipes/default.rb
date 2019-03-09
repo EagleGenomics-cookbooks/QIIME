@@ -39,6 +39,11 @@ pyenv_pip 'h5py' do
   version node['h5py']['version']
 end
 
+# other required packages
+package 'libxml2-dev'
+package 'libcurl4-openssl-dev'
+package 'muscle'
+
 include_recipe 'R'
 
 # install biom R package from tar file
@@ -51,21 +56,13 @@ execute 'install_biom' do
   command "R CMD INSTALL #{Chef::Config[:file_cache_path]}/#{node['biom']['filename']}"
 end
 
-# other required packages
-
-apt_package 'libxml2-dev'
-apt_package 'libcurl4-openssl-dev'
-apt_package 'muscle'
-
-script 'install_bioconductor_packages' do
-  interpreter 'Rscript'
-  code <<-SCRIPT
-  source( 'http://bioconductor.org/biocLite.R' )
-  biocLite(c("DESeq2"), dependencies = TRUE)
-  biocLite("metagenomeSeq")
-  biocLite("biomformat")
-  q()
-  SCRIPT
+%w(DESeq2 metagenomeSeq biomformat).each do |rpackage|
+  ruby_block 'R packages' do
+    block do
+      require 'rinruby'
+      R.eval "BiocManager::install('#{rpackage}')", false
+    end
+  end
 end
 
 magic_shell_environment 'QIIME_VERSION' do

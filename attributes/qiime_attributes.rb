@@ -9,4 +9,4 @@ default['biom']['url'] = 'https://cran.r-project.org/src/contrib/Archive/biom/' 
 # This is the version required by QIIME, available on ubuntu 18.04
 default['python']['version'] = '2.7.16'
 
-default['R']['packages'] = %w(ape optparse RColorBrewer randomForest vegan RJSONIO plyr)
+default['R']['packages'] = %w(ape optparse RColorBrewer randomForest vegan RJSONIO plyr BiocManager)
