@@ -56,12 +56,10 @@ execute 'install_biom' do
   command "R CMD INSTALL #{Chef::Config[:file_cache_path]}/#{node['biom']['filename']}"
 end
 
-%w(DESeq2 metagenomeSeq biomformat).each do |rpackage|
-  ruby_block 'R packages' do
-    block do
-      require 'rinruby'
-      R.eval "BiocManager::install('#{rpackage}')", false
-    end
+ruby_block 'Install Bioconductor packages using BiocManager' do
+  block do
+    require 'rinruby'
+    R.eval "BiocManager::install(c('DESeq2', 'metagenomeSeq', 'biomformat'), update=TRUE, ask=FALSE)"
   end
 end
 
