@@ -56,12 +56,12 @@ execute 'install_biom' do
   command "R CMD INSTALL #{Chef::Config[:file_cache_path]}/#{node['biom']['filename']}"
 end
 
-# ruby_block 'Install Bioconductor packages using BiocManager' do
-#   block do
-#     require 'rinruby'
-#     R.eval "BiocManager::install(c('DESeq2', 'metagenomeSeq', 'biomformat'), update=TRUE, ask=FALSE)"
-#   end
-# end
+ruby_block 'Install Bioconductor packages using BiocManager' do
+  block do
+    require 'rinruby'
+    R.eval "BiocManager::install(c('DESeq2', 'metagenomeSeq', 'biomformat'), update=TRUE, ask=FALSE)"
+  end
+end
 
 magic_shell_environment 'QIIME_VERSION' do
   value node['QIIME']['version']
