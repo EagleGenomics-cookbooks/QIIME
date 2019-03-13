@@ -24,7 +24,8 @@ before_script:
 
 script:
 # QIIME and R installs take a long time and exceed the default travis timeout
-- travis_wait 120 /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
+#- travis_wait 120 /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
+- /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
 
 after_script:
 - /opt/chefdk/embedded/bin/kitchen destroy ${INSTANCE}
