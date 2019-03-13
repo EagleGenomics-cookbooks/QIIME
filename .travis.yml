@@ -23,8 +23,6 @@ before_script:
 - /opt/chefdk/bin/chef exec rake tests
 
 script:
-# QIIME and R installs take a long time and exceed the default travis timeout
-#- travis_wait 120 /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
 - /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
 
 after_script:
